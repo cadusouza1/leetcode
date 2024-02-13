@@ -1,13 +1,17 @@
+# def lengthOfLastWord(s: str) -> int:
+#     size = 0
+
+#     for char in s.rstrip()[::-1]:
+#         if char == " ":
+#             return size
+
+#         size += 1
+
+#     return size
+
+
 def lengthOfLastWord(s: str) -> int:
-    size = 0
-
-    for char in s.rstrip()[::-1]:
-        if char == " ":
-            return size
-
-        size += 1
-
-    return size
+    return len(s.strip().split()[-1])
 
 
 def main():
