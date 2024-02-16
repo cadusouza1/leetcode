@@ -1,16 +1,8 @@
 def firstPalindrome(words: list[str]) -> str:
     try:
-        s = next(
-            filter(
-                lambda s: s is not None,
-                map(lambda s: s if s == s[::-1] else None, words),
-            )
-        )
-
+        return next(filter(lambda s: s == s[::-1], words))
     except StopIteration:
-        s = ""
-
-    return s if s else ""
+        return ""
 
 
 def main():
