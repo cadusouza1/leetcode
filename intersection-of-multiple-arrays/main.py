@@ -1,19 +1,19 @@
-from collections import defaultdict
+from functools import reduce
+from typing import Counter
 
 
 class Solution:
     def intersection(
         self, nums: list[list[int]]
     ) -> list[int]:
-        intersect = []
-        frequencies = defaultdict(int)
+        frequencies = reduce(
+            lambda acc, counter: acc + counter,
+            map(lambda arr: Counter(arr), nums),
+        )
 
-        for arr in nums:
-            for num in arr:
-                frequencies[num] += 1
-
-        for num, frequency in frequencies.items():
-            if frequency == len(nums):
-                intersect.append(num)
-
-        return sorted(intersect)
+        return sorted(
+            filter(
+                lambda k: frequencies[k] == len(nums),
+                frequencies,
+            )
+        )
